@@ -1,0 +1,22 @@
+.dashboard-center-content {
+  width: 50%;
+  padding: 20px;
+  border: 1px solid #eee;
+  margin: 20% auto;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows:auto 1fr auto;
+  grid-template-columns:50% 50%;
+
+  .card {
+    background-color: #fff;
+  }
+
+  .card:not(first-child) {
+    margin-left: 20px;
+  }
+}
+
+a {
+  text-decoration: none;
+}

@@ -1,0 +1,51 @@
+<form [formGroup]="cabinetForm">
+  <div class="add-form">
+    <h2>Schrank anlegen</h2>
+    <div class="form-group">
+      <label for="">Breite</label>
+      <input
+        formControlName="width"
+        type="number"
+        min="1"
+        max="30"
+        class="form-control"
+        aria-describedby="widthInfoId"
+        placeholder="Breite"
+      />
+      <small id="widthInfoId" class="form-text text-muted">Breite des neuen Schrankes</small>
+    </div>
+    <div *ngFor="let error of errors.width">
+      <div *ngIf="width.hasError(error.type)" class="alert alert-danger" role="alert">
+        <span class="alert-heading">{{ error.message }}</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">Höhe</label>
+      <input
+        formControlName="height"
+        type="number"
+        min="1"
+        max="50"
+        class="form-control"
+        aria-describedby="heightInfoId"
+        placeholder="Höhe"
+      />
+      <small id="heightInfoId" class="form-text text-muted">Höhe des neuen Schrankes</small>
+    </div>
+
+    <div *ngFor="let error of errors.height">
+      <div *ngIf="height.hasError(error.type)" class="alert alert-danger" role="alert">
+        <span class="alert-heading">{{ error.message }}</span>
+      </div>
+    </div>
+    <input
+      [disabled]="!cabinetForm.valid"
+      name="createCabinet"
+      (click)="createCabinet()"
+      id=""
+      class="btn btn-primary"
+      type="button"
+      value="anlegen"
+    />
+  </div>
+</form>

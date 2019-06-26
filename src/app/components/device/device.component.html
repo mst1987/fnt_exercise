@@ -1,0 +1,25 @@
+<app-add-device></app-add-device>
+
+<table class="table" *ngIf="deviceList.length > 0">
+  <thead>
+    <tr>
+      <th scope="col">
+        device ID
+      </th>
+      <th>Breite</th>
+      <th>Höhe</th>
+      <th>Optionen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="col-md-12" *ngFor="let device of deviceList">
+      <td>{{ device.id }}</td>
+      <td>{{ device.width }}</td>
+      <td>{{ device.height }}</td>
+      <td>
+        <a name="" id="" routerLink="details/{{device.id}}" class="btn btn-primary" role="button">Details</a>
+        <a name="" id="" (click)="deleteDevice(device.id)" class="btn btn-danger text-white" role="button">löschen</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

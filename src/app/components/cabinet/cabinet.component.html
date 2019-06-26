@@ -1,0 +1,25 @@
+<app-add-cabinet></app-add-cabinet>
+
+<table class="table" *ngIf="cabinetList.length > 0">
+  <thead>
+    <tr>
+      <th scope="col">
+        Cabinet ID
+      </th>
+      <th>Breite</th>
+      <th>Höhe</th>
+      <th>Optionen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="col-md-12" *ngFor="let cabinet of cabinetList">
+      <td>{{ cabinet.id }}</td>
+      <td>{{ cabinet.width }}</td>
+      <td>{{ cabinet.height }}</td>
+      <td>
+        <a name="" id="" routerLink="details/{{cabinet.id}}" class="btn btn-primary" role="button">Details</a>
+        <a name="" id="" (click)="deleteCabinet(cabinet.id)" class="btn btn-danger text-white" role="button">löschen</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
