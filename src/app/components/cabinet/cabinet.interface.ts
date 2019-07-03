@@ -3,5 +3,5 @@ export interface Cabinet {
   id: number;
   height: number;
   width: number;
-  devices?: Device[];
+  devices: Device[];
 }

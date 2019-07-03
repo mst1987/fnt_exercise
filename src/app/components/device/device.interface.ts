@@ -2,6 +2,7 @@ export interface Device {
     id: number;
     height: number;
     width: number;
+    cabinetId?: number;
     posX?: number;
-    poxY?: number;
+    posY?: number;
 }

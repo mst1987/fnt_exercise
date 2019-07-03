@@ -1,10 +1,11 @@
+<app-back-button></app-back-button>
 <app-add-device></app-add-device>
 
 <table class="table" *ngIf="deviceList.length > 0">
   <thead>
     <tr>
       <th scope="col">
-        device ID
+        Device ID
       </th>
       <th>Breite</th>
       <th>Höhe</th>
@@ -17,8 +18,8 @@
       <td>{{ device.width }}</td>
       <td>{{ device.height }}</td>
       <td>
-        <a name="" id="" routerLink="details/{{device.id}}" class="btn btn-primary" role="button">Details</a>
-        <a name="" id="" (click)="deleteDevice(device.id)" class="btn btn-danger text-white" role="button">löschen</a>
+        <a routerLink="{{device.id}}" class="btn btn-primary" role="button">Details</a>
+        <a (click)="deleteDevice(device.id)" class="btn btn-danger text-white" role="button">löschen</a>
       </td>
     </tr>
   </tbody>

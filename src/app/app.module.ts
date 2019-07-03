@@ -12,7 +12,10 @@ import { CabinetDetailsComponent } from './components/cabinet/cabinet-details/ca
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DeviceDetailsComponent } from './components/device/device-details/device-details.component';
 import { AddDeviceComponent } from './components/device/add-device/add-device.component';
-
+import { BackButtonComponent } from './components/back-button/back-button.component';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material';
+import { AddDeviceToCabinetComponent } from './components/cabinet/add-device-to-cabinet/add-device-to-cabinet.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,13 +25,17 @@ import { AddDeviceComponent } from './components/device/add-device/add-device.co
     CabinetDetailsComponent,
     DashboardComponent,
     DeviceDetailsComponent,
-    AddDeviceComponent
+    AddDeviceComponent,
+    BackButtonComponent,
+    AddDeviceToCabinetComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [
     DeviceService,

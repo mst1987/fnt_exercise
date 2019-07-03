@@ -1,3 +1,5 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 body {
   margin: 0;
   padding: 0;
@@ -13,11 +15,47 @@ body {
 
 .add-form {
   width: 100%;
-  border: 1px solid #eee;
   padding: 20px;
 
   input {
     max-width: 150px;
     text-align: right;
+  }
+}
+
+.server-item {
+  border: 1px solid #eeeeee;
+  background-color: #eeeeee;
+  color: #333;
+  text-align: center;
+  font-weight: bold;
+}
+
+.device {
+  background-color: rgb(44, 43, 42);
+  color: #fff;
+}
+
+.center-aligner {
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.info {
+  text-align: center;
+  width: 150px;
+  margin: 0 0 10px 10px;
+  overflow: hidden;
+  float: left;
+
+  div {
+    h1 {
+      margin: 0;
+    }
+
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    float: left;
   }
 }

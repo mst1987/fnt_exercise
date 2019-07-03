@@ -1,3 +1,4 @@
+<app-back-button></app-back-button>
 <app-add-cabinet></app-add-cabinet>
 
 <table class="table" *ngIf="cabinetList.length > 0">
@@ -17,7 +18,7 @@
       <td>{{ cabinet.width }}</td>
       <td>{{ cabinet.height }}</td>
       <td>
-        <a name="" id="" routerLink="details/{{cabinet.id}}" class="btn btn-primary" role="button">Details</a>
+        <a name="" id="" routerLink="{{cabinet.id}}" class="btn btn-primary" role="button">Details</a>
         <a name="" id="" (click)="deleteCabinet(cabinet.id)" class="btn btn-danger text-white" role="button">löschen</a>
       </td>
     </tr>

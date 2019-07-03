@@ -31,6 +31,6 @@ export class AddCabinetComponent implements OnInit {
   }
 
   createCabinet(): void {
-    if (this.cabinetForm.valid) this.cabinetService.createCabinet(this.newCabinet);
+    if (this.cabinetForm.valid) { this.cabinetService.createCabinet(this.newCabinet); }
   }
 }

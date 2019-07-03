@@ -1,3 +1,48 @@
-<p>
-  device-details works!
-</p>
+<app-back-button></app-back-button>
+<div class="content" style="padding: 10px;">
+  <div class="row">
+    <div class="col-6">
+      <div class="info">
+        <div class="bg-info text-white">
+          <i class="fa fa-text-width fa-2x"></i>
+          <h1 class="card-title">{{ device.width }}</h1>
+          <span class="card-text">Breite</span>
+        </div>
+      </div>
+      <div class="info">
+        <div class="bg-info text-white">
+          <i class="fa fa-text-height fa-2x"></i>
+          <h1 class="card-title">{{ device.height }}</h1>
+          <span class="card-text">Höhe</span>
+        </div>
+      </div>
+      <div class="info">
+        <div class="bg-info text-white">
+          <i class="fa fa-server fa-2x"></i>
+          <h1 class="card-title">{{ device.cabinetId ? '#' + device.cabinetId : 'Nein' }}</h1>
+          <span class="card-text">zugeordnet</span>
+        </div>
+      </div>
+      <div class="info" *ngIf="device.cabinetId">
+          <div class="bg-info text-white">
+            <i class="fa fa-server fa-2x"></i>
+            <h1 class="card-title">{{ device.posX }}</h1>
+            <span class="card-text">PosX</span>
+          </div>
+        </div>
+      <div class="info" *ngIf="device.cabinetId">
+        <div class="bg-info text-white">
+          <i class="fa fa-server fa-2x"></i>
+          <h1 class="card-title">{{ device.posY }}</h1>
+          <span class="card-text">PosY</span>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="row">
+  <div class="col-sm">
+    <div class="server-item device" [style.width.px]="device.width * 10" [style.height.px]="device.height * 10">
+      Device #{{ device.id }}
+    </div>
+  </div>
+</div>

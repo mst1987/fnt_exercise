@@ -1,5 +1,112 @@
-<div
-  [style.width.px]="cabinet.width"
-  [style.height.px]="cabinet.height"
-  style="border: 1px solid #eee; padding: 10px; background-color: #96031A; opacity: 0.2;"
-></div>
+<app-back-button></app-back-button>
+<div class="content" style="padding: 10px;">
+  <div class="row">
+    <div class="col-4">
+      <div class="info">
+        <div class="bg-info text-white">
+          <i class="fa fa-text-width fa-2x"></i>
+          <h1 class="card-title">{{ cabinet.width }}</h1>
+          <span class="card-text">Breite</span>
+        </div>
+      </div>
+      <div class="info">
+        <div class="bg-info text-white">
+          <i class="fa fa-text-height fa-2x"></i>
+          <h1 class="card-title">{{ cabinet.height }}</h1>
+          <span class="card-text">Höhe</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-8">
+      <form (ngSubmit)="addDeviceToCabinet()">
+        <div class="add-device-content" *ngIf="freeDevices.length > 0">
+          <div class="form-group">
+            <h3 for="">Freie Geräte</h3>
+            <select [(ngModel)]="deviceToAdd" class="form-control" name="deviceToAdd" id="deviceToAdd">
+              <option *ngFor="let device of freeDevices" [ngValue]="device">Device #{{ device.id }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="">Pox X</label>
+            <input
+              [(ngModel)]="deviceToAdd.posX"
+              type="number"
+              max="30"
+              name="deviceToAddPosX"
+              min="0"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label for="">Pox Y</label>
+            <input
+              [(ngModel)]="deviceToAdd.posY"
+              type="number"
+              max="30"
+              name="deviceToAddPosY"
+              min="0"
+              class="form-control"
+            />
+          </div>
+          <button class="btn btn-primary" role="button" type="submit">zu Schrank hinzufügen</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <div class="device-list" [style.width.px]="cabinet.width * 10" [style.height.px]="cabinet.height * 10">
+        <div
+          class="server-item"
+          [style.width.px]="cabinet.width * 10"
+          [style.height.px]="cabinet.height * 10"
+          style="z-index: 500; position: relative;"
+        >
+          <div
+            class="server-item device"
+            *ngFor="let device of cabinet.devices"
+            [style.left.px]="device.posX * 10"
+            [style.top.px]="device.posY * 10"
+            [style.width.px]="device.width * 10"
+            [style.height.px]="device.height * 10"
+            style="z-index: 500; position: absolute;"
+          >
+            Device #{{ device.id }}
+          </div>
+          Server #{{ cabinet.id }}
+        </div>
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="cabinet-device-list">
+        <div class="device-content" *ngFor="let device of cabinet.devices">
+          <div
+            draggable="true"
+            class="server-item device"
+            [style.width.px]="device.width * 10"
+            [style.height.px]="device.height * 10"
+            style="z-index: 500; display: inline-block;"
+          >
+            Device #{{ device.id }}
+          </div>
+          <div class="form-group">
+            <label for="">Pox X</label>
+            <input
+              [ngModel]="device.posX"
+              (change)="cabinetService.checkDevicePositions(device, cabinet)"
+              type="number"
+              max="30"
+              min="0"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label for="">Pox Y</label>
+            <input [ngModel]="device.posY" type="number" max="30" min="0" class="form-control" />
+          </div>
+          <button (click)="updateDeviceOfCabinet(device)" type="button" class="btn btn-primary">speichern</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

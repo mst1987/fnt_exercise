@@ -1,0 +1,30 @@
+
+.server-item {
+  border: solid 1px #ccc;
+  text-align: center;
+  z-index: 1;
+}
+
+.device-list {
+  position: relative;
+}
+
+.row {
+  margin-bottom: 25px;
+}
+
+.cabinet-device-list {
+  width: 60%;
+
+  .device-content {
+    padding: 10px;
+    border: 1px solid #eee;
+    margin-bottom: 20px;
+  }
+}
+
+.add-device-content{
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #eee;
+}
