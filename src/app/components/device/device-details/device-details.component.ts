@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-device-details',
+  selector: 'device-details',
   templateUrl: './device-details.component.html',
   styleUrls: ['./device-details.component.scss']
 })

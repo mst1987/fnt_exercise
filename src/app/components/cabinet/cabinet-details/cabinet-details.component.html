@@ -1,4 +1,4 @@
-<app-back-button></app-back-button>
+<back-button></back-button>
 <div class="content" style="padding: 10px;">
   <div class="row">
     <div class="col-4">
@@ -18,39 +18,7 @@
       </div>
     </div>
     <div class="col-8">
-      <form (ngSubmit)="addDeviceToCabinet()">
-        <div class="add-device-content" *ngIf="freeDevices.length > 0">
-          <div class="form-group">
-            <h3 for="">Freie Geräte</h3>
-            <select [(ngModel)]="deviceToAdd" class="form-control" name="deviceToAdd" id="deviceToAdd">
-              <option *ngFor="let device of freeDevices" [ngValue]="device">Device #{{ device.id }}</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="">Pox X</label>
-            <input
-              [(ngModel)]="deviceToAdd.posX"
-              type="number"
-              max="30"
-              name="deviceToAddPosX"
-              min="0"
-              class="form-control"
-            />
-          </div>
-          <div class="form-group">
-            <label for="">Pox Y</label>
-            <input
-              [(ngModel)]="deviceToAdd.posY"
-              type="number"
-              max="30"
-              name="deviceToAddPosY"
-              min="0"
-              class="form-control"
-            />
-          </div>
-          <button class="btn btn-primary" role="button" type="submit">zu Schrank hinzufügen</button>
-        </div>
-      </form>
+      <add-device-to-cabinet [cabinet]="cabinet" [freeDevices]="freeDevices"></add-device-to-cabinet>
     </div>
   </div>
   <div class="row">

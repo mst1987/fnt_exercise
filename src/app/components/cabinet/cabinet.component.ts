@@ -4,7 +4,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Cabinet } from './cabinet.interface';
 
 @Component({
-  selector: 'app-cabinet',
+  selector: 'cabinet',
   templateUrl: './cabinet.component.html',
   styleUrls: ['./cabinet.component.scss']
 })

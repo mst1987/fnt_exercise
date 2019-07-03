@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DeviceService } from 'src/app/services/device.service';
 
 @Component({
-  selector: 'app-add-device',
+  selector: 'add-device',
   templateUrl: './add-device.component.html',
   styleUrls: ['./add-device.component.scss']
 })

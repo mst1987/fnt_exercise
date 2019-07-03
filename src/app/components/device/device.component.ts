@@ -4,7 +4,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-device',
+  selector: 'device',
   templateUrl: './device.component.html',
   styleUrls: ['./device.component.scss']
 })

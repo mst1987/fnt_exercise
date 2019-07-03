@@ -1,3 +1,33 @@
-<p>
-  add-device-to-cabinet works!
-</p>
+<form (ngSubmit)="addDeviceToCabinet()">
+        <div class="add-device-content" *ngIf="freeDevices.length > 0">
+          <div class="form-group">
+            <h3 for="">Freie Geräte</h3>
+            <select [(ngModel)]="deviceToAdd" class="form-control" name="deviceToAdd" id="deviceToAdd">
+              <option *ngFor="let device of freeDevices" [ngValue]="device">Device #{{ device.id }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="">Pox X</label>
+            <input
+              [(ngModel)]="deviceToAdd.posX"
+              type="number"
+              max="30"
+              name="deviceToAddPosX"
+              min="0"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label for="">Pox Y</label>
+            <input
+              [(ngModel)]="deviceToAdd.posY"
+              type="number"
+              max="30"
+              name="deviceToAddPosY"
+              min="0"
+              class="form-control"
+            />
+          </div>
+          <button class="btn btn-primary" role="button" type="submit">zu Schrank hinzufügen</button>
+        </div>
+      </form>

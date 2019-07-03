@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-add-cabinet',
+  selector: 'add-cabinet',
   templateUrl: './add-cabinet.component.html',
   styleUrls: ['./add-cabinet.component.scss']
 })
