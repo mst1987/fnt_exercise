@@ -73,7 +73,7 @@ export class CabinetService {
   }
 
   checkDevicePositions(device: Device, cabinet: Cabinet): boolean {
-    let check = {};
+    let check: Device = {} as Device;
 
     if (cabinet.devices.length > 0) {
       check = cabinet.devices.find(cabinetDevice => {
