@@ -55,7 +55,7 @@ export const errorMessages = {
       },
       {
         type: 'max',
-        message: 'Die Höhe darf maximal 50 betragen'
+        message: 'Die Höhe darf maximal 30 betragen'
       }
     ]
   }

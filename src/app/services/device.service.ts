@@ -28,6 +28,7 @@ export class DeviceService {
   }
 
   updateDevice(updatedDevice: Device): void {
+    console.log(updatedDevice)
     const deviceList = this.deviceSubject.value;
     const toUpdate = deviceList.findIndex(device => device.id === updatedDevice.id);
     deviceList[toUpdate] = updatedDevice;

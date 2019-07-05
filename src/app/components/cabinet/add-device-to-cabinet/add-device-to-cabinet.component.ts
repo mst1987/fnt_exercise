@@ -24,6 +24,9 @@ export class AddDeviceToCabinetComponent implements OnInit {
 
     if (!this.cabinetService.addDeviceToCabinet(this.cabinet, addThis)) {
       window.alert('Hinzufügen nicht möglich');
+    } else {
+      this.deviceToAdd = this.freeDevices[1];
     }
+
   }
 }

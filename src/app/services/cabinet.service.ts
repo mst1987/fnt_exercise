@@ -1,6 +1,6 @@
+import { Cabinet } from './../components/cabinet/cabinet.interface';
 import { DeviceService } from 'src/app/services/device.service';
 import { Device } from './../components/device/device.interface';
-import { Cabinet } from '../components/cabinet/cabinet.interface';
 import { Injectable } from '@angular/core';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 
@@ -68,15 +68,43 @@ export class CabinetService {
     return false;
   }
 
-  checkDevicePositions(device: Device, cabinet: Cabinet): boolean {
-    const check = cabinet.devices.find(cabinetDevice => {
-      return (
-        device.posX < cabinetDevice.posX + cabinetDevice.width &&
-        device.posY < cabinetDevice.posY + cabinetDevice.height
-      );
-    });
+  removeDeviceFromCabinet(device: Device, cabinet: Cabinet): Promise<boolean> {
+    return;
+  }
 
-    if (check || device.height + device.posY > cabinet.height || device.width + device.posX > cabinet.width) {
+  checkDevicePositions(device: Device, cabinet: Cabinet): boolean {
+    let check = {};
+
+    if (cabinet.devices.length > 0) {
+      check = cabinet.devices.find(cabinetDevice => {
+        return (
+          // unten rechts -> oben links
+          !(device.posX + device.width >= cabinetDevice.posX
+            && device.posY + device.height >= cabinetDevice.posY) ||
+          // unten links -> oben rechts
+          !(
+            device.posX <= cabinetDevice.posX + cabinetDevice.width
+            && device.posY + device.height >= cabinetDevice.posY
+          ) ||
+          // oben links -> unten rechts
+          !(
+            device.posX <= cabinetDevice.posX + cabinetDevice.width &&
+            device.posY <= cabinetDevice.posY + cabinetDevice.height
+          ) ||
+          // oben rechts -> unten links
+          !(
+            device.posX + device.width >= cabinetDevice.posX
+            && device.posY <= cabinetDevice.posY + cabinetDevice.height
+          )
+        );
+      });
+    }
+
+    if (
+      check === undefined ||
+      device.height + device.posY > cabinet.height ||
+      device.width + device.posX > cabinet.width
+    ) {
       return false;
     }
 

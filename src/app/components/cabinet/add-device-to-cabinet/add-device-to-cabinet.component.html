@@ -1,9 +1,10 @@
 <form (ngSubmit)="addDeviceToCabinet()">
+    <h3 for="">Freie Geräte</h3>
         <div class="add-device-content" *ngIf="freeDevices.length > 0">
           <div class="form-group">
-            <h3 for="">Freie Geräte</h3>
             <select [(ngModel)]="deviceToAdd" class="form-control" name="deviceToAdd" id="deviceToAdd">
-              <option *ngFor="let device of freeDevices" [ngValue]="device">Device #{{ device.id }}</option>
+              <option [disabled]="true">Name | Breite | Höhe</option>
+              <option *ngFor="let device of freeDevices" [ngValue]="device">Device #{{ device.id }} | {{device.width}} | {{device.height}} </option>
             </select>
           </div>
           <div class="form-group">

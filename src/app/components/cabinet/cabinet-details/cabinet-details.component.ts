@@ -47,5 +47,11 @@ export class CabinetDetailsComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  updateDeviceOfCabinet(device) {}
+  updateDeviceOfCabinet(device) {
+    this.deviceService.updateDevice(device);
+  }
+
+  removeDeviceFromCabinet(device) {
+    this.cabinetService.removeDeviceFromCabinet(device, this.cabinet);
+  }
 }

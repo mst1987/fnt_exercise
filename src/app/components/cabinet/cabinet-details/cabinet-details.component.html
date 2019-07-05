@@ -1,7 +1,12 @@
 <back-button></back-button>
 <div class="content" style="padding: 10px;">
+
   <div class="row">
-    <div class="col-4">
+      <div class="col-4">
+          <add-device-to-cabinet [cabinet]="cabinet" [freeDevices]="freeDevices"></add-device-to-cabinet>
+        </div>
+    <div class="col-8">
+      <h3>Serverschrankdetails</h3>
       <div class="info">
         <div class="bg-info text-white">
           <i class="fa fa-text-width fa-2x"></i>
@@ -17,12 +22,44 @@
         </div>
       </div>
     </div>
-    <div class="col-8">
-      <add-device-to-cabinet [cabinet]="cabinet" [freeDevices]="freeDevices"></add-device-to-cabinet>
-    </div>
   </div>
   <div class="row">
     <div class="col-4">
+      <h3>Zugefügte Geräte</h3>
+      <div class="cabinet-device-list">
+        <div class="device-content" *ngFor="let device of cabinet.devices">
+          <div
+            draggable="true"
+            class="server-item device"
+            [style.width.px]="device.width * 10"
+            [style.height.px]="device.height * 10"
+            style="z-index: 500; display: inline-block;"
+          >
+            Device #{{ device.id }}
+          </div>
+          <div class="form-group">
+            <label for="">Pox X</label>
+            <input
+              [ngModel]="device.posX"
+              value="{{device.posX}}"
+              type="number"
+              max="30"
+              min="0"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label for="">Pox Y</label>
+            <input [ngModel]="device.posY" type="number" max="30" min="0" class="form-control" />
+          </div>
+          <button (click)="updateDeviceOfCabinet(device)" type="button" class="btn btn-primary">aktualisieren</button>
+          <button (click)="removeDeviceFromCabinet(device)" type="button" class="btn btn-danger">entfernen</button>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-8">
+      <h3>Serverschrank</h3>
       <div class="device-list" [style.width.px]="cabinet.width * 10" [style.height.px]="cabinet.height * 10">
         <div
           class="server-item"
@@ -42,37 +79,6 @@
             Device #{{ device.id }}
           </div>
           Server #{{ cabinet.id }}
-        </div>
-      </div>
-    </div>
-    <div class="col-8">
-      <div class="cabinet-device-list">
-        <div class="device-content" *ngFor="let device of cabinet.devices">
-          <div
-            draggable="true"
-            class="server-item device"
-            [style.width.px]="device.width * 10"
-            [style.height.px]="device.height * 10"
-            style="z-index: 500; display: inline-block;"
-          >
-            Device #{{ device.id }}
-          </div>
-          <div class="form-group">
-            <label for="">Pox X</label>
-            <input
-              [ngModel]="device.posX"
-              (change)="cabinetService.checkDevicePositions(device, cabinet)"
-              type="number"
-              max="30"
-              min="0"
-              class="form-control"
-            />
-          </div>
-          <div class="form-group">
-            <label for="">Pox Y</label>
-            <input [ngModel]="device.posY" type="number" max="30" min="0" class="form-control" />
-          </div>
-          <button (click)="updateDeviceOfCabinet(device)" type="button" class="btn btn-primary">speichern</button>
         </div>
       </div>
     </div>

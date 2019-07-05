@@ -5,6 +5,7 @@
       <label for="">Breite</label>
       <input
         formControlName="width"
+        [(ngModel)]="newCabinet.width"
         type="number"
         min="1"
         max="30"
@@ -23,6 +24,7 @@
       <label for="">Höhe</label>
       <input
         formControlName="height"
+        [(ngModel)]="newCabinet.height"
         type="number"
         min="1"
         max="50"

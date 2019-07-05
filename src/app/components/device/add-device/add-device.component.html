@@ -1,34 +1,51 @@
-<div class="add-form">
+<form [formGroup]="deviceForm">
+  <div class="add-form">
     <h2>Server/Geräte anlegen</h2>
     <div class="form-group">
       <label for="">Breite</label>
       <input
+        formControlName="width"
         [(ngModel)]="newDevice.width"
         type="number"
         min="1"
         max="30"
         class="form-control"
-        name=""
-        id=""
-        aria-describedby="helpId"
+        aria-describedby="widthInfoId"
         placeholder="Breite"
       />
-      <small id="helpId" class="form-text text-muted">Breite des neuen Gerätes</small>
+      <small id="widthInfoId" class="form-text text-muted">Breite des neuen Gerätes</small>
+    </div>
+    <div *ngFor="let error of errors.width">
+      <div *ngIf="width.hasError(error.type)" class="alert alert-danger" role="alert">
+        <span class="alert-heading">{{ error.message }}</span>
+      </div>
     </div>
     <div class="form-group">
       <label for="">Höhe</label>
       <input
+        formControlName="height"
         [(ngModel)]="newDevice.height"
         type="number"
         min="1"
         max="30"
         class="form-control"
-        name=""
-        id=""
-        aria-describedby="helpId"
+        aria-describedby="heightInfoId"
         placeholder="Höhe"
       />
-      <small id="helpId" class="form-text text-muted">Höhe des neuen Gerätes</small>
+      <small id="heightInfoId" class="form-text text-muted">Höhe des neuen Gerätes</small>
     </div>
-    <input name="addCabinet" (click)="createDevice()" id="" class="btn btn-primary" type="button" value="hinzufügen" />
+    <div *ngFor="let error of errors.height">
+      <div *ngIf="height.hasError(error.type)" class="alert alert-danger" role="alert">
+        <span class="alert-heading">{{ error.message }}</span>
+      </div>
+    </div>
+    <input
+      [disabled]="!deviceForm.valid"
+      name="createCabinet"
+      (click)="createDevice()"
+      class="btn btn-primary"
+      type="button"
+      value="anlegen"
+    />
   </div>
+</form>
